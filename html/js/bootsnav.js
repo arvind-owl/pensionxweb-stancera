@@ -467,18 +467,20 @@
                 $(".wrap-sticky").height(getHeight);
                 
                 // Windown on scroll
-                var getOffset = $(".wrap-sticky").offset().top;
+                var getOffset = 10;
                 $(window).on("scroll", function(){  
                     var scrollTop = $(window).scrollTop();
                     if(scrollTop > getOffset){
                         getNav.addClass("sticked");
+						$("#header").addClass("stickyHeader");
                     }else {
                         getNav.removeClass("sticked");
+						$("#header").removeClass("stickyHeader");
                     }
                 });
             }   
         },
-        
+		  
         // ------------------------------------------------------------------------------ //
         // Navbar Scrollspy
         // ------------------------------------------------------------------------------ //
@@ -574,5 +576,20 @@
         $(".navbar-collapse").removeClass("bounceIn");      
     });
     
+	// $(window).scroll(function() {    
+		// var scroll = $(window).scrollTop();    
+		// if (scroll <= 10) {
+			// $(".navbar").addClass("sticked");
+		// }
+		
+		// else {
+			// $(".navbar").removeClass("sticked");
+		// }
+	// });
+	
+	
 }(jQuery));
+
+
+
 
