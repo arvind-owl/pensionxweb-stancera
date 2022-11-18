@@ -134,7 +134,7 @@ jQuery(function($) {
 
     /* Owl all sliders
     ============================================== */
-    $("#news-slider, #nav_slider").owlCarousel({
+    $("#news-slider").owlCarousel({
         autoPlay: 3000,
         items: 3,
         pagination: true,
@@ -143,6 +143,8 @@ jQuery(function($) {
             "<i class='fa fa-angle-left'></i>",
             "<i class='fa fa-angle-right'></i>"
         ],
+		itemsDesktop: [5000, 3],
+		itemsDesktop: [1250, 2],
         itemsDesktopSmall: [1024, 2],
         itemsTablet: [768, 2],
         itemsMobile: [479, 1],
@@ -157,6 +159,7 @@ jQuery(function($) {
             "<i class='fa fa-angle-left'></i>",
             "<i class='fa fa-angle-right'></i>"
         ],
+		itemsDesktop: [5000, 1],
         itemsDesktopSmall: [1024, 1],
         itemsTablet: [768, 1],
         itemsMobile: [479, 1],
