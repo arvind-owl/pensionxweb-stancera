@@ -115,6 +115,7 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }, []);
 
     useEffect(() => {
+      console.log(banner);
       getPostsByCategories();
       getCategoryNames();
       getEventCategories();
@@ -365,6 +366,10 @@ const  getImageUrl=(imageId)=> {
       
         if(!isAlready)
             {
+              if(id!='' && id!=null && id!=undefined)
+              {
+
+              
               setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
@@ -390,6 +395,7 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
   }
 })
             }
+          }
   
 }
 
@@ -401,7 +407,11 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
+function createMarkup(html) {
+  return { __html: html };
+}
 
+console.log(banner);
 	return (
   	<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
     <section id="slider-section">
@@ -409,122 +419,70 @@ let date = dat.substring(6);
         <div className="row">
           <div className="col-md-12 col-lg-6 desktop-only">
             <div className="row top30">
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/01.jpg" alt="image" />
-                  <h4>New To StanCERA</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/02.jpg" alt="image"/>
-                  <h4>Mid-Career</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/03.jpg" alt="image"/>
-                  <h4>Life Events & Job Changes</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/04.jpg" alt="image"/>
-                  <h4>Nearing Retirement</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/05.jpg" alt="image"/>
-                  <h4>Retired</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/05.jpg" alt="image"/>
-                  <h4>Life or Career Change</h4>
-                </div>
-              </div>
+              {banner?.acf?.homepage_slider_boxes && banner?.acf?.homepage_slider_boxes.length > 0 && banner?.acf?.homepage_slider_boxes.map((item,index)=>{
+                  return(
+                  <div key={index} className="col-md-4 col-sm-4 col-xs-6 text-center">
+                  <div className="catagory-box">
+                    <img className="img-fluid" src={getImageUrl(item.homepage_slider_box_image).toString()} alt="image" />
+                    <h4>{item.homepage_slider_box_title}</h4>
+                  </div>
+                </div>);
+              })
+            }
+             
             </div>
           </div>
           <div className="col-md-12 col-lg-6 about-slider">
             <div id="about_single" className="owl-carousel top30">
+              <div className='owl-wrapper-outer'>
+              <div className='owl-wrapper'>
+            {banner?.acf?.homepage_slider_slides && banner?.acf?.homepage_slider_slides.length > 0 && banner?.acf?.homepage_slider_slides.map((slide,index)=>{
+                  return(
+                    
+                      <div key={index}  className='owl-item' >
               <div className="item">
                 <div className="content-right-md">
                   <figure className="effect-layla">
-                    <img className="img-fluid" src="/img/slide-2.jpg" alt="img" />
+                    <img className="img-fluid" src={getImageUrl(slide.homepage_slider_slide_image).toString()} alt="img" />
                     <figcaption>
-                      <h2 className="mb-2">Virtual seminar: planning for <br/> retirement </h2>
-                      <p className="mb-4">Search for our seminars and webinars by topic or interest, or browse <br/> through our video library. </p>
-                      <button type="submit" className="VedioLibrary">Vedio Library</button>
+                      <h2 className="mb-2" dangerouslySetInnerHTML={createMarkup(slide.homepage_slider_slide_heading)} ></h2>
+                      <p className="mb-4" dangerouslySetInnerHTML={createMarkup(slide.homepage_slider_slide_content)}></p>
+                      <Link href={slide.homepage_slider_slide_button_link} className="VedioLibrary"><a className="VedioLibrary">{slide.homepage_slider_slide_button_text}</a></Link>
                     </figcaption>
                   </figure>
                 </div>
               </div>
-              <div className="item">
-                <div className="content-right-md">
-                  <figure className="effect-layla">
-                    <img className="img-fluid" src="/img/slide-2.jpg" alt="img" />
-                    <figcaption>
-                      <h2 className="mb-2">Virtual seminar: planning for <br/> retirement </h2>
-                      <p className="mb-4">Search for our seminars and webinars by topic or interest, or browse <br/> through our video library. </p>
-                      <button type="submit" className="VedioLibrary">Vedio Library</button>
-                    </figcaption>
-                  </figure>
-                </div>
               </div>
-              <div className="item">
-                <div className="content-right-md">
-                  <figure className="effect-layla">
-                    <img className="img-fluid" src="/img/slide-2.jpg" alt="img" />
-                    <figcaption>
-                      <h2 className="mb-2">Virtual seminar: planning for <br/> retirement </h2>
-                      <p className="mb-4">Search for our seminars and webinars by topic or interest, or browse <br/> through our video library. </p>
-                      <button type="submit" className="VedioLibrary">Vedio Library</button>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
+                  );})
+}</div></div>
+            <div className="owl-controls clickable">
+              <div className="owl-pagination">
+              {banner?.acf?.homepage_slider_slides && banner?.acf?.homepage_slider_slides.length > 0 && banner?.acf?.homepage_slider_slides.map((slide,index)=>{
+                 return( 
+                 <div key={index} className="owl-page displayItem">
+                    <span className=""></span>
+                    </div>
+                 )
+              })
+            }
+                      </div>
+                      </div>
             </div>
           </div>
+         
           <div className="col-md-6 mobile-only">
             <div className="row top30">
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/01.jpg" alt="image"/>
-                  <h4>New To StanCERA</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/02.jpg" alt="image"/>
-                  <h4>Mid-Career</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/03.jpg" alt="image"/>
-                  <h4>Life Events & Job Changes</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/04.jpg" alt="image"/>
-                  <h4>Nearing Retirement</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/05.jpg" alt="image"/>
-                  <h4>Retired</h4>
-                </div>
-              </div>
-              <div className="col-md-4 col-sm-4 col-xs-6 text-center">
-                <div className="catagory-box">
-                  <img className="img-fluid" src="/img/05.jpg" alt="image"/>
-                  <h4>Life or Career Change</h4>
-                </div>
-              </div>
+            {banner?.acf?.homepage_slider_boxes && banner?.acf?.homepage_slider_boxes.length > 0 && banner?.acf?.homepage_slider_boxes.map((item,index)=>{
+                  return(
+                  <div key={index} className="col-md-4 col-sm-4 col-xs-6 text-center">
+                  <div className="catagory-box">
+                    <img className="img-fluid" src={getImageUrl(item.homepage_slider_box_image).toString()} alt="image" />
+                    <h4>{item.homepage_slider_box_title}</h4>
+                  </div>
+                </div>);
+              })
+            }
+              
             </div>
           </div>
         </div>
@@ -534,263 +492,115 @@ let date = dat.substring(6);
       <div className="container">
         <div className="row">
           <div className="col-xs-12 text-center mb-5">
-            <h2>Latest News</h2>
-            <p className="heading_space">Check out the latest news, updates, & reports from StanCERA</p>
+            <h2>{banner?.acf?.stay_informed_title}</h2>
+            <p className="heading_space" dangerouslySetInnerHTML={createMarkup(banner?.acf?.stay_informed_content)} />
           </div>
         </div>
         <div className="row mobile-only">
-          <div className="col-xs-12">
-            <div className="news_item bottom40">
-              <div className="news_content">
-                <div className="news_text">
-                  <h5>News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                  <h3>
-                    <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                  </h3>
-                  <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                  <div className="float-left">
-                    <p className="prop-user">
-                      <a href="#">
-                        <i className="fa fa-angle-left"></i> Find out more </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-xs-12">
-            <div className="news_item bottom40">
-              <div className="news_content">
-                <div className="news_text">
-                  <h5>News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                  <h3>
-                    <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                  </h3>
-                  <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                  <div className="float-left">
-                    <p className="prop-user">
-                      <a href="#">
-                        <i className="fa fa-angle-left"></i> Find out more </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-xs-12">
-            <div className="news_item bottom40">
-              <div className="news_content">
-                <div className="news_text">
-                  <h5>News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                  <h3>
-                    <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                  </h3>
-                  <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                  <div className="float-left">
-                    <p className="prop-user">
-                      <a href="#">
-                        <i className="fa fa-angle-left"></i> Find out more </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {
+        postsData && postsData.length > 0 && postsData.map((post,index)=>{
+                    return(
+                      <div key={index} className="col-xs-12">
+                      <div className="news_item bottom40">
+                        <div className="news_content">
+                          <div className="news_text">
+                            <h5>{post?.categories.length > 0 && post?.categories.map((cat,ind)=>{
+                                             if(ind==0)
+                                             {
+                                              return(<span key={ind}>{getCatnameById(cat)}</span>)
+                                             }else
+                                             {
+                                              return(<span key={ind}>, {getCatnameById(cat)}</span>)
+                                              
+                                             } 
+                                        }) }<span className="bullet-circle">•</span>{post?.date}</h5>
+                            <h3>
+                            <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>{post.title}</a></Link>
+                            </h3>
+                            <p dangerouslySetInnerHTML={createMarkup(post.content)} />
+                            <div className="float-left">
+                              <p className="prop-user">
+                              <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>
+                                  <i className="fa fa-angle-left"></i> Find out more </a></Link>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+          )
+
+        })
+      }
+         
+         
         </div>
         <div className="row desktop-only">
-          <div id="news-slider" className="owl-carousel">
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5>News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
+
+        {postsData &&
+          			<div id="news-slider" className="owl-carousel">
+                  <div className='owl-wrapper-outer'>
+                    <div className='owl-wrapper' style={{width: (postsData.length*33.33)+'%',left: '0px', display:'flex', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'%, 0px, 0px)'}}>
+                   {postsData.length > 0 && postsData.map((post,index)=>{
+                    return(
+                          <div key={index} className="owl-item">
+                            <div className='item'>
+                            <div className="news_item bottom40">
+                                    <div className="news_content">
+                                      <div className="news_text">
+                                      
+                                        <h5>{post?.categories.length > 0 && post?.categories.map((cat,index)=>{
+                                             if(index==0)
+                                             {
+                                              return(<span key={index}>{getCatnameById(cat)}</span>)
+                                             }else
+                                             {
+                                              return(<span key={index}>, {getCatnameById(cat)}</span>)
+                                              
+                                             } 
+                                        }) } <span className="bullet-circle">•</span> {post?.date} </h5>
+                                        
+                                        <h3>
+                                          <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>{post.title}</a></Link>
+                                        </h3>
+
+                                        <p dangerouslySetInnerHTML={createMarkup(post.content)} />
+                                        <div className="float-left">
+                                          <p className="prop-user">
+                                          <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a><i className="fa fa-angle-left"></i> Find out more</a></Link>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+                    )
+
+                  })}
+            			</div>
                   </div>
+                  <div className="owl-controls clickable">
+                    <div className="owl-pagination">
+                    {postsData.length > 0 && postsData.map((post,index)=>{
+                     return( <div key={index} className={currentSlide == index ?"active owl-page": "owl-page"} onClick={()=>{activeOwlSide(index)}}>
+                        <span ></span>
+                        </div>);
+                    })}
+                      
+                    </div>
+                  <div className="owl-buttons">
+                    <div className ={currentSlide == 0?"owl-prev disabled":"owl-prev"} onClick={()=>{ prevOwlSide(currentSlide)}}>
+                      <i className="fa fa-angle-left"></i>
+                    </div>
+                    <div className={currentSlide == postsData.length - 1 ?"owl-next disabled" : "owl-next"}  onClick={()=>{nextOwlSide(currentSlide)}}>
+                      <i className="fa fa-angle-right"></i>
+                    </div>
                 </div>
               </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="news_item bottom40">
-                <div className="news_content">
-                  <div className="news_text">
-                    <h5> News <span className="bullet-circle">•</span> October 29, 2022 </h5>
-                    <h3>
-                      <a href="#">Alameda Decision <br/> Update : Active <br/> Members </a>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, <br/> consectetur adipiscing elit, sed do <br/> eiusmod </p>
-                    <div className="float-left">
-                      <p className="prop-user">
-                        <a href="#">
-                          <i className="fa fa-angle-left"></i> Find out more </a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
+            }
+
         </div>
       </div>
     </section>
@@ -798,123 +608,16 @@ let date = dat.substring(6);
   <div className="container">
     <div className="row">
       <div className="col-xs-12 text-center">
-        <h2>Life Events</h2>
-        <p className="sub-heading"> Life is full of excitement, twists, and turns. Click on any of the <br/> common milestones listed here for insights and guidance on <br/> how they might affect your plan. </p>
-        <button type="submit" className="mobile-only view-more-btn">View More</button>
+        <h2>{banner?.acf?.life_event_title}</h2>
+        <p className="sub-heading" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_content)} />
+        <Link href={banner?.acf?.life_event_button_link? (banner?.acf?.life_event_button_link).toString():"#"} className="mobile-only view-more-btn"><a className="mobile-only view-more-btn">{banner?.acf?.life_event_button_text}</a></Link>
+                    
       </div>
     </div>
     <div className="row">
-      <div className="col-md-6 col-lg-4 mobile-only">
-        <ul className="fa-ul">
-          <li>
-            <i className="fa fa-check"></i> MARRIAGE
-          </li>
-          <li>
-            <i className="fa fa-check"></i> BIRTH / ADOPTION
-          </li>
-          <li>
-            <i className="fa fa-check"></i> DIVORCE
-          </li>
-          <li>
-            <i className="fa fa-check"></i> ILLNESS / DISABILITY
-          </li>
-          <li>
-            <i className="fa fa-check"></i> JOB CHANGE
-          </li>
-          <li>
-            <i className="fa fa-check"></i> DEATH
-          </li>
-        </ul>
-      </div>
-      <div className="steps-timeline text-center display-none">
-        <div className="steps-one">
-          <div className="end-circle back-orange"></div>
-          <div className="step-wrap">
-            <div className="steps-stops">
-              <div className="verticle-line back-orange"></div>
-            </div>
-          </div>
-          <div className="pane-warp back-blue">
-            <div className="steps-pane">
-              <img src="/img/icon01.jpg" />
-            </div>
-          </div>
-          <div className="inverted-pane-warp back-blue">
-            <div className="inverted-steps-pane">
-              <p>Marriage</p>
-            </div>
-          </div>
-        </div>
-        <div className="steps-two">
-          <div className="step-wrap">
-            <div className="steps-stops">
-              <div className="verticle-line back-orange"></div>
-            </div>
-          </div>
-          <div className="pane-warp back-orange">
-            <div className="steps-pane">
-              <img src="/img/icon01.jpg" />
-            </div>
-          </div>
-          <div className="inverted-pane-warp back-orange">
-            <div className="inverted-steps-pane">
-              <p>Birth / Adoption</p>
-            </div>
-          </div>
-        </div>
-        <div className="steps-three">
-          <div className="step-wrap">
-            <div className="steps-stops">
-              <div className="verticle-line back-orange"></div>
-            </div>
-          </div>
-          <div className="pane-warp back-blue">
-            <div className="steps-pane">
-              <img src="/img/icon01.jpg" />
-            </div>
-          </div>
-          <div className="inverted-pane-warp back-blue">
-            <div className="inverted-steps-pane">
-              <p>Divorce</p>
-            </div>
-          </div>
-        </div>
-        <div className="steps-four">
-          <div className="step-wrap">
-            <div className="steps-stops">
-              <div className="verticle-line back-orange"></div>
-            </div>
-          </div>
-          <div className="pane-warp back-orange">
-            <div className="steps-pane">
-              <img src="/img/icon01.jpg" />
-            </div>
-          </div>
-          <div className="inverted-pane-warp back-orange">
-            <div className="inverted-steps-pane">
-              <p>Illness / Disability</p>
-            </div>
-          </div>
-        </div>
-        <div className="steps-five">
-          <div className="inverted-end-circle back-orange"></div>
-          <div className="step-wrap">
-            <div className="steps-stops">
-              <div className="verticle-line back-orange"></div>
-            </div>
-          </div>
-          <div className="pane-warp back-blue">
-            <div className="steps-pane">
-              <img src="/img/icon01.jpg" />
-            </div>
-          </div>
-          <div className="inverted-pane-warp back-blue">
-            <div className="inverted-steps-pane">
-              <p>Job Change</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="col-md-6 col-lg-4 mobile-only" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_content)} />
+       
+      <div className="steps-timeline text-center display-none" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_extra_content)} />
     </div>
   </div>
 </section>
@@ -923,80 +626,40 @@ let date = dat.substring(6);
     <div className="row">
       <div className="col-sm-1 col-md-2"></div>
       <div className="col-xs-12 col-sm-10 col-md-8 text-center">
-        <h2>Upcoming Meetings <span className="display-none">& Events</span>
-        </h2>
+        <h2>{banner?.acf?.upcoming_event_title}</h2>
       </div>
       <div className="col-sm-1 col-md-2"></div>
     </div>
     <div className="row mb-4">
-      <div className="col-lg-12 text-center">
-        <ul className="upcoming-events">
-          <li>
-            <i className="fa fa-file"></i> Most Recent Agenda
-          </li>
-          <li>
-            <i className="fa fa-calendar"></i> Full Calendar
-          </li>
-        </ul>
-      </div>
+      <div className="col-lg-12 text-center" dangerouslySetInnerHTML={createMarkup(banner?.acf?.upcoming_event_extra_content)} />
+
     </div>
     <div className="row">
-      <div className="col-md-4">
+    {  eventPosts && eventPosts.length > 0 && eventPosts.map((event,ind)=>{
+
+return( 
+<div key={ind} className="col-md-4">
         <div className="event-item">
           <div className="event-image">
             <div className="post-date">
-              <small className="month">OCT</small>
+              <small className="month">{getCovertMonthFormat(event?.acf.event_date)}</small>
               <br/>
-              <span className="date">10</span>
+              <span className="date">{getCovertDateFormat(event?.acf.event_date)}</span>
             </div>
           </div>
           <div className="event-content">
             <div className="event-title mb-15">
-              <h3 className="title"> Board of Directors Meeting </h3>
-              <span className="ticket-price yellow-color">10:30am PST</span>
-              <span className="ticket-price ViewLiveStream">
-                <u>
-                  <i className="fa fa-wifi"></i> View Live Stream </u>
-              </span>
+              <h3 className="title"> <Link href={event.link}><a>{event?.title}</a></Link> </h3>
+              <span className="ticket-price yellow-color">{getCovertTimeFormat(event?.acf.event_time)} PST</span>
+              
             </div>
           </div>
         </div>
       </div>
-      <div className="col-md-4">
-        <div className="event-item">
-          <div className="event-image">
-            <div className="post-date">
-              <small className="month">OCT</small>
-              <br/>
-              <span className="date">10</span>
-            </div>
-          </div>
-          <div className="event-content">
-            <div className="event-title mb-15">
-              <h3 className="title"> Board of Directors Meeting </h3>
-              <span className="ticket-price yellow-color">10:30am PST</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-md-4">
-        <div className="event-item">
-          <div className="event-image">
-            <div className="post-date">
-              <small className="month">OCT</small>
-              <br/>
-              <span className="date">10</span>
-            </div>
-          </div>
-          <div className="event-content">
-            <div className="event-title mb-15">
-              <h3 className="title"> Board of Directors Meeting </h3>
-              <span className="ticket-price yellow-color">10:30am PST</span>
-              <span className="ticket-price calcelled">Cancelled</span>
-            </div>
-          </div>
-        </div>
-      </div>
+)
+
+})}
+      
     </div>
   </div>
 </section>
@@ -1005,30 +668,19 @@ let date = dat.substring(6);
   <div className="container">
     <div className="row">
       <div className="col-md-5 col-lg-3 col-lg-offset-3">
-        <h3>Thinking About <br/> Retirement? </h3>
+        <h3>{banner?.acf?.thinking_about_title}</h3>
       </div>
       <div className="col-md-1 col-lg-1 text-center">
-        <img alt="" src="/img/lines-1.jpg" />
+        <img alt="" src="/img/lines-1.jpg"  />
       </div>
-      <div className="col-md-6 col-lg-4">
-        <ul className="fa-ul">
-          <li>Attend a retirement webinar <span className="right-arrow"> &gt;</span>
-          </li>
-          <li>Calculate your retirement benefit <span className="right-arrow"> &gt;</span>
-          </li>
-          <li>Apply for Retirements <span className="right-arrow"> &gt;</span>
-          </li>
-          <li>More FAQs <span className="right-arrow"> &gt;</span>
-          </li>
-        </ul>
-      </div>
+      <div className="col-md-6 col-lg-4" dangerouslySetInnerHTML={createMarkup(banner?.acf?.thinking_about_extra_content)} />
     </div>
   </div>
 </section>
 <section className="life-events-img">
   <div className="container-fluid">
     <div className="row">
-      <img className="img-fluid" alt="" src="/img/bg-footer-1.jpg" />
+      <img className="img-fluid" alt="" src={getImageUrl(banner?.acf?.thinking_about_image)} />
     </div>
   </div>
 </section>
