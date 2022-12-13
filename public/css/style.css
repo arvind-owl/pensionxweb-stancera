@@ -1610,7 +1610,10 @@ nav.navbar.bootsnav
   float: left;
   width: 100%;
 }
-
+.text-center .img-fluid
+{
+  margin:0 auto;
+}
 .border-bottom {
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 65px;
