@@ -201,10 +201,7 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
                   </div>
                 </div>
               </li>
-              <li className="mobile-only">
-                                <div id="google_translate_element" > </div>
-               
-              </li>
+              
               {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
                                     return (
                                         <li key={index} className={val.children && val.children.length > 0 ?"dropdown ":""} >
@@ -243,8 +240,8 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
                                     );
                                     })}
              
-             <li className="desktop-only">
-                                <div id="google_translate_element" > </div>
+             <li className="translatorSection">
+             <div id="google_translate_element" ></div>
                                 </li>
               <li className="desktop-only">
                 <a className="" href="#">
