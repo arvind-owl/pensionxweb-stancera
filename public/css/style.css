@@ -1121,6 +1121,27 @@ i {
 div#\:0\.targetLanguage {
   display: flex;
 }
+.asideBox {
+  margin-bottom: 30px;
+}
+
+.asideBox img {
+  width: 100%;
+}
+.AsideCards h5 {
+  margin-bottom: 6px!important;
+  text-align: left;
+  font: normal normal bold 20px/20px Cabin!important;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+.AsideCards p {
+  color: #ffffff;
+}
+.AsideCards {
+  padding: 20px;
+}
 .goog-te-menu-value {
   text-decoration: none;
   color: #0000cc;
