@@ -48,6 +48,9 @@ let isAlready = false;
   
     if(!isAlready)
         {
+          if(id!='' && id!=null && id!=undefined)
+              {
+
           setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
 
@@ -73,6 +76,7 @@ setReloadItem(!reloadItem);
 }
 })
         }
+      }
 
 }
 

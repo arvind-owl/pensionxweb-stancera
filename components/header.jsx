@@ -58,6 +58,9 @@ export default function Header({ children, headerMenuItems }) {
       
         if(!isAlready)
             {
+              if(id!='' && id!=null && id!=undefined)
+              {
+
               setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
@@ -83,6 +86,7 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
   }
 })
             }
+          }
   
 }
 
@@ -173,7 +177,7 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
           </div>
         </div>
       </div>
-      <nav className="navbar navbar-default navbar-fixed no-background navbar-sticky dark bootsnav">
+      <nav className="navbar navbar-default navbar-sticky dark bootsnav">
         <div className="container">
        
           <div className="navbar-header">

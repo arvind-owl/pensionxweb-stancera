@@ -366,6 +366,10 @@ const  getImageUrl=(imageId)=> {
       
         if(!isAlready)
             {
+              if(id!='' && id!=null && id!=undefined)
+              {
+
+              
               setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
@@ -391,6 +395,7 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
   }
 })
             }
+          }
   
 }
 
@@ -405,6 +410,8 @@ let date = dat.substring(6);
 function createMarkup(html) {
   return { __html: html };
 }
+
+console.log(banner);
 	return (
   	<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
     <section id="slider-section">
@@ -427,9 +434,13 @@ function createMarkup(html) {
           </div>
           <div className="col-md-12 col-lg-6 about-slider">
             <div id="about_single" className="owl-carousel top30">
+              <div className='owl-wrapper-outer'>
+              <div className='owl-wrapper'>
             {banner?.acf?.homepage_slider_slides && banner?.acf?.homepage_slider_slides.length > 0 && banner?.acf?.homepage_slider_slides.map((slide,index)=>{
                   return(
-              <div key={index} className="item">
+                    
+                      <div key={index}  className='owl-item' >
+              <div className="item">
                 <div className="content-right-md">
                   <figure className="effect-layla">
                     <img className="img-fluid" src={getImageUrl(slide.homepage_slider_slide_image).toString()} alt="img" />
@@ -441,10 +452,24 @@ function createMarkup(html) {
                   </figure>
                 </div>
               </div>
+              </div>
                   );})
-}
+}</div></div>
+            <div className="owl-controls clickable">
+              <div className="owl-pagination">
+              {banner?.acf?.homepage_slider_slides && banner?.acf?.homepage_slider_slides.length > 0 && banner?.acf?.homepage_slider_slides.map((slide,index)=>{
+                 return( 
+                 <div key={index} className="owl-page displayItem">
+                    <span className=""></span>
+                    </div>
+                 )
+              })
+            }
+                      </div>
+                      </div>
             </div>
           </div>
+         
           <div className="col-md-6 mobile-only">
             <div className="row top30">
             {banner?.acf?.homepage_slider_boxes && banner?.acf?.homepage_slider_boxes.length > 0 && banner?.acf?.homepage_slider_boxes.map((item,index)=>{
@@ -490,12 +515,12 @@ function createMarkup(html) {
                                              } 
                                         }) }<span className="bullet-circle">•</span>{post?.date}</h5>
                             <h3>
-                            <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
+                            <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>{post.title}</a></Link>
                             </h3>
-                            <p dangerouslySetInnerHTML={createMarkup(post.content?post.content:'#')} />
+                            <p dangerouslySetInnerHTML={createMarkup(post.content)} />
                             <div className="float-left">
                               <p className="prop-user">
-                              <Link passHref href={post.slug?post.slug:"#"}><a>
+                              <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>
                                   <i className="fa fa-angle-left"></i> Find out more </a></Link>
                               </p>
                             </div>
@@ -536,13 +561,13 @@ function createMarkup(html) {
                                         }) } <span className="bullet-circle">•</span> {post?.date} </h5>
                                         
                                         <h3>
-                                          <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
+                                          <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>{post.title}</a></Link>
                                         </h3>
 
-                                        <p dangerouslySetInnerHTML={createMarkup(post.content?post.content:'#')} />
+                                        <p dangerouslySetInnerHTML={createMarkup(post.content)} />
                                         <div className="float-left">
                                           <p className="prop-user">
-                                          <Link passHref href={post.slug?post.slug:"#"}><a><i className="fa fa-angle-left"></i> Find out more</a></Link>
+                                          <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a><i className="fa fa-angle-left"></i> Find out more</a></Link>
                                           </p>
                                         </div>
                                       </div>
@@ -592,7 +617,7 @@ function createMarkup(html) {
     <div className="row">
       <div className="col-md-6 col-lg-4 mobile-only" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_content)} />
        
-      <div className="steps-timeline text-center display-none" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_content)} />
+      <div className="steps-timeline text-center display-none" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_extra_content)} />
     </div>
   </div>
 </section>
@@ -610,7 +635,7 @@ function createMarkup(html) {
 
     </div>
     <div className="row">
-    {eventPosts && eventPosts.length > 0 && eventPosts.map((event,ind)=>{
+    {  eventPosts && eventPosts.length > 0 && eventPosts.map((event,ind)=>{
 
 return( 
 <div key={ind} className="col-md-4">
@@ -624,15 +649,9 @@ return(
           </div>
           <div className="event-content">
             <div className="event-title mb-15">
-              <h3 className="title"> {event?.title} </h3>
+              <h3 className="title"> <Link href={event.link}><a>{event?.title}</a></Link> </h3>
               <span className="ticket-price yellow-color">{getCovertTimeFormat(event?.acf.event_time)} PST</span>
-              <span className="ticket-price">
-                <Link href="#"><a>
-                  <i className="fa fa-wifi">
-                    </i> View Live Stream </a>
-                    </Link>
-                
-              </span>
+              
             </div>
           </div>
         </div>
