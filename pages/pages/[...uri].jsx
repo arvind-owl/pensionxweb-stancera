@@ -294,7 +294,7 @@ function getMediaUrlById(id)
       <div className="single-call-to-action-inner">
        <h3>We are here to answer your questions 24/7</h3>
        <h1>Need for it solution services</h1>
-       <a className="btn btn_yellow mt-3" href="/pages/contact">Contact Us</a>
+       <Link href="/pages/contact" ><a className="btn btn_yellow mt-3" >Contact Us</a></Link>
       </div>
      </div>
     </div>
