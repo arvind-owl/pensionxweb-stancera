@@ -615,7 +615,7 @@ console.log(banner);
       </div>
     </div>
     <div className="row">
-      <div className="col-md-6 col-lg-4 mobile-only" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_content)} />
+      <div className="col-md-6 col-lg-4 mobile-only" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_extra_content)} />
        
       <div className="steps-timeline text-center display-none" dangerouslySetInnerHTML={createMarkup(banner?.acf?.life_event_extra_content)} />
     </div>
