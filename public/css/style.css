@@ -738,15 +738,16 @@ i {
 }
 .steps-timeline ul.lifeeventChecks li i.fa.fa-check {
   display: block;
-  clear: both;
-  float: none;
-  width: 85px;
-  background: #5a9e53;
-  color: #fff;
-  border-radius: 50%;
-  margin: 50px auto 10px;
-  height: 85px;
-  line-height: 85px;
+    clear: both;
+    float: none;
+    width: 85px;
+    background: #5a9e53;
+    color: #fff;
+    border-radius: 50%;
+    margin: 50px auto 10px;
+    height: 85px;
+    line-height: 85px;
+    font-size: 35px!important;
 }
 .owl-pagination .owl-page
 {
@@ -2363,7 +2364,7 @@ a:hover {
 
 .widget.dark h3 {
   text-align: left;
-  font: normal normal bold 18px/28px Gill Sans;
+  font: normal normal bold 18px/28px Gill Sans !important;
   letter-spacing: 0px;
   color: #303030;
 }
@@ -2654,7 +2655,7 @@ section.life-events {
 
 .event-item .event-content .event-title .title {
   text-align: left;
-  font: normal normal bold 16px Gill Sans;
+  font: normal normal bold 16px Gill Sans !important;
   letter-spacing: 0.2px;
   color: #303030;
   opacity: 1;
@@ -2779,7 +2780,7 @@ span.bullet-circle {
 
 #upcoming h2 {
   text-align: center;
-  font: normal normal bold 40px/63px Brandon Grotesque;
+  font: normal normal bold 40px/63px Brandon Grotesque !important;
   letter-spacing: 0px;
   color: #303030;
   opacity: 1;
@@ -2887,7 +2888,7 @@ span.right-arrow {
 
 #timeline h2 {
   text-align: center;
-  font: normal normal bold 40px/70px Brandon Grotesque;
+  font: normal normal bold 40px/70px Brandon Grotesque !important;
   letter-spacing: 0px;
   color: #303030;
 }
@@ -3079,7 +3080,7 @@ span.right-arrow {
   margin-bottom: 5px;
   margin-top: 10px;
   text-align: left;
-  font: normal normal bold 36px/41px Brandon Grotesque;
+  font: normal normal bold 36px/41px Brandon Grotesque !important;
   letter-spacing: 0px;
   color: #303030;
   opacity: 1;
@@ -3088,7 +3089,7 @@ span.right-arrow {
 .news_content p {
   margin: 0;
   text-align: left;
-  font: normal normal normal 18px/22px Gill Sans;
+  font: normal normal normal 18px/22px Gill Sans !important;
   letter-spacing: 0px;
   color: #333333;
   opacity: 1;
@@ -5969,4 +5970,52 @@ section.features-area-education {
 }
 .courses-area {
   padding: 100px 0;
+}
+
+@media (min-width: 100px) and (max-width: 992px){
+  .single-call-to-action-inner h1 {
+      color: #fff;
+      font: normal normal 700 45px/55px Gill Sans!important;
+  }
+  #image-text .image-text-heading>h2 {
+      font-size: 40px!important;
+  }
+  .arrow-img {
+      display: none;
+  }
+  .how-we-work-section .item {
+      padding: 0 10px;
+      margin-bottom: 50px;
+  }
+  .container {
+      width: 100%!important;
+  }
+  
+  .cta__content h1 {
+      font-size: 40px;
+  }
+  
+  #finance-area {
+      padding: 20px 0;
+  }
+  .service {
+      margin-bottom: 0px;
+  }
+  .feature {
+      padding: 85px 50px;
+  }
+  .main-about {
+      padding-top: 50px;
+      padding-bottom: 50px;
+  }
+  .features-mask, .features-mask:before {
+      position: relative!important;
+  }
+  
+  .courses-area {
+      padding: 50px 0;
+  }
+  .courses-area h2 {
+      font: normal normal 700 33px/55px Gill Sans!important;
+  }
 }
