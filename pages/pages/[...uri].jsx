@@ -287,6 +287,19 @@ function getMediaUrlById(id)
 
 :''}               
      </div>
+	 <div className="call-to-action-area" style={{backgroundImage: "url('/img/5.webp')"}}>
+   <div className="container">
+    <div className="row justify-content-center">
+     <div className="col-lg-6 col-md-8 text-center">
+      <div className="single-call-to-action-inner">
+       <h3>We are here to answer your questions 24/7</h3>
+       <h1>Need for it solution services</h1>
+       <a className="btn btn_yellow mt-3" href="/pages/contact">Contact Us</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
 </Layout>
 	)
 }
