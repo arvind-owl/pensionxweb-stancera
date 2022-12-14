@@ -5954,3 +5954,19 @@ section.features-area-education {
   top: 0;
   left: 0;
 }
+.px-3 {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+.choose-area:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgb(232, 191, 79, 0.8)!important;
+}
+.courses-area {
+  padding: 100px 0;
+}
