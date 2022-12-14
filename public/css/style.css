@@ -743,11 +743,10 @@ i {
   width: 85px;
   background: #5a9e53;
   color: #fff;
-  padding: 20px;
-  font-size: 40px;
-  margin: 10px auto;
   border-radius: 50%;
-  margin-top: 50px;
+  margin: 50px auto 10px;
+  height: 85px;
+  line-height: 85px;
 }
 .owl-pagination .owl-page
 {
@@ -1151,7 +1150,11 @@ div#\:0\.targetLanguage {
   display: flex;
 }
 div#google_translate_element {
-  margin-top: 12px;
+  margin-top: 20px;
+}
+.sticked div#google_translate_element {
+  margin: 10px 0;
+  padding: 20px 15px;
 }
 #header nav.navbar.bootsnav.navbar-sticky .navbar-brand {
   display: block;
@@ -2858,7 +2861,7 @@ p.copy-right {
 .life-events h3 {
   margin-bottom: 25px;
   text-align: left;
-  font: normal normal bold 50px/55px Brandon Grotesque;
+  font: normal normal bold 50px/55px Brandon Grotesque!important;
   letter-spacing: 0px;
   color: #303030;
   opacity: 1;
@@ -3210,8 +3213,8 @@ section#slider-section {
 
 .effect-layla figcaption {
   position: absolute;
-  bottom: 0px;
-  padding: 0px 44px 40px;
+  bottom: 60px;
+  padding: 0 44px 40px;
 }
 
 .effect-layla h2 {
@@ -3232,15 +3235,18 @@ section#slider-section {
   opacity: 1;
 }
 
-button.VedioLibrary {
-  box-shadow: 0px 3px 6px #00000029;
-  border: 2px solid #ffffff;
+.VedioLibrary {
+  box-shadow: 0 3px 6px #00000029;
+  border: 2px solid #fff;
   border-radius: 6px;
   opacity: 1;
   background: transparent;
   width: 175px;
   height: 52px;
   color: #fff;
+  padding: 10px 28px;
+  margin-top: 10px;
+  position: absolute;
 }
 
 .effect-layla img {
@@ -4826,7 +4832,7 @@ section#work-area\ padding {
     text-align: center;
     font: normal normal bold 18px/20px Cabin;
     letter-spacing: 0px;
-    color: #303030;
+    color: #303030!important;
     margin-top: 20px;
   }
 
