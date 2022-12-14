@@ -3,6 +3,7 @@ import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Image from 'next/image';
+import dayjs from 'dayjs';
 import Layout from '../components/layout';
 import Link from 'next/link';
 import { getFooterMenu,getHeaderMenu } from '../lib/Menus';
@@ -149,7 +150,7 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     {
     axios
     .get(
-      "https://dev-stancera.pantheonsite.io/wp-json/wp/v2/event?per_page="+banner?.acf?.upcoming_event_no_of_events+"&categories="+categoriesIds
+      "https://dev-stancera.pantheonsite.io/wp-json/wp/v2/event?per_page="+banner?.acf?.upcoming_event_no_of_events+"&order=desc&status=publish&categories="+categoriesIds
     )
     .then((res) =>{
       let allupdate = false;
@@ -210,7 +211,7 @@ else
     {
       axios
       .get(
-        "https://dev-stancera.pantheonsite.io/wp-json/wp/v2/posts?per_page="+banner?.acf?.stay_informed_no_of_posts+"&categories="+categoriesIds
+        "https://dev-stancera.pantheonsite.io/wp-json/wp/v2/posts?per_page="+banner?.acf?.stay_informed_no_of_posts+"&order=desc&status=publish&categories="+categoriesIds
       )
       .then((res) => { 
         let allupdate = false;
