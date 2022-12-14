@@ -688,92 +688,7 @@ i {
 .padding-bottom-top-120 {
   padding: 120px 0;
 }
-.main-title {
-  background: #e9e9ee;
-  border-radius: 5px;
-  display: inline-block;
-  float: none;
-  outline: 1px solid #394d6b;
-  outline-offset: -10px;
-  padding: 30px 150px;
-  text-align: center;
-  margin: 120px 0;
-}
 
-h1, h2, h3, h4, h5, h6 {
-  color: #1f1f1f;
-}
-
-.main-title h5 {
-  font-weight: 400;
-  margin: 0 0 15px;
-  color: #1f1f1f;
-  font-size: 22px;
-}
-
-.main-title h1 {
-  font-weight: 700;
-  color: #fff;
-  font-size: 45px;
-  margin-bottom: 10px;
-}
-
-.page-title a, .page-title h5 {
-  font-family: Cabin;
-  color: #005581;
-}
-.page-title span {
-  margin: 0 10px;
-  position: relative;
-}
-
-.main-title i {
-  color: #f20606;
-}
-
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-.color_blue {
-  color: #e9c04f!important;
-}
-
-.mt-5 {
-  margin-top: 3rem!important;
-}
-
-#contact-us .contact i {
-  font-size: 26px;
-  margin-right: 15px;
-  vertical-align: middle;
-  color: #aca196;
-}
-#contact-us .contact p {
-  font-size: 15px!important;
-  text-align: left;
-  font: normal normal normal 16px/22px Libre Franklin;
-  letter-spacing: .32px;
-  color: #303030;
-  opacity: 1;
-  font-weight: 500;
-}
-
-.socials li {
-  display: inline-block;
-}
-
-.socials li a {
-  color: #e9c04f;
-  border: 1px solid #e9c04f;
-  display: block;
-  font-size: 14px;
-  height: 32px;
-  line-height: 33px;
-  width: 32px;
-  margin: 5px 5px 5px 0;
-  text-align: center;
-}
 /** Seperators for Headings **/
 /*image wraps*/
 
@@ -5149,4 +5064,239 @@ section#work-area\ padding {
 .eduation-sec2 .card-body {
   flex: 1 1 auto;
   padding: 2rem 2rem;
+}
+.main-title {
+  background: #e9e9ee;
+  border-radius: 5px;
+  display: inline-block;
+  float: none;
+  outline: 1px solid #394d6b;
+  outline-offset: -10px;
+  padding: 30px 150px;
+  text-align: center;
+  margin: 120px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1f1f1f;
+}
+
+.main-title h5 {
+  font-weight: 400;
+  margin: 0 0 15px;
+  color: #1f1f1f;
+  font-size: 22px;
+}
+
+.main-title h1 {
+  font-weight: 700;
+  color: #000;
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.page-title a, .page-title h5 {
+  font-family: Gill Sans;
+  color: #000!important;
+}
+
+.page-title span {
+  margin: 0 10px;
+  position: relative;
+}
+
+.main-title i {
+  color: #f20606;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.color_blue {
+  color: #e9c04f!important;
+}
+
+.mt-5 {
+  margin-top: 3rem!important;
+}
+
+#contact-us .contact i {
+  font-size: 26px;
+  margin-right: 15px;
+  vertical-align: middle;
+  color: #aca196;
+}
+#contact-us .contact p {
+  font-size: 15px!important;
+  text-align: left;
+  font: normal normal normal 16px/22px Gill Sans;
+  letter-spacing: .32px;
+  color: #303030;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.socials li {
+  display: inline-block;
+}
+
+.socials li a {
+  color: #e9c04f;
+  border: 1px solid #e9c04f;
+  display: block;
+  font-size: 14px;
+  height: 32px;
+  line-height: 33px;
+  width: 32px;
+  margin: 5px 5px 5px 0;
+  text-align: center;
+}
+i {
+    font-size: 20px!important;
+}
+p {
+    margin: 0 0 10px!important;
+}
+.socials li a:focus, .socials li a:hover {
+    background: #e9c04f;
+    border-color: #e9c04f;
+    color: #000;
+}
+/*=========About page css=============*/
+
+.leftright_sidebar {
+    margin: 50px 0;
+}
+.leftSidebarSection {
+    margin: 50px 0;
+    padding-left: 50px;
+}
+
+h5.leftSidebarHeading {
+    text-align: left;
+    font: normal normal 700 21px/28px Gill Sans!important;
+    letter-spacing: -.42px;
+    color: #292929;
+    opacity: 1;
+}
+.submenus li {
+    font-weight: 700;
+    font-size: 21px;
+    list-style-type: none;
+}
+
+.submenus .menuHead {
+    text-align: left;
+    font: normal normal 700 18px/20px Gill Sans!important;
+    letter-spacing: 0;
+    color: #394d6b;
+    opacity: 1;
+}
+
+.our-mission-box-detail h3 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 22px;
+    padding-bottom: 10px;
+    font-style: oblique;
+}
+.our-mission-box-detail p {
+    line-height: 24px;
+}
+
+.our-mission-box-detail ul li {
+    display: block;
+    padding-top: 20px;
+    position: relative;
+    padding-left: 30px;
+}
+.our-mission-box-detail ul li:before {
+    content: "\f0c8";
+    position: absolute;
+    left: 0;
+    top: 22px;
+    font-family: FontAwesome;
+    font-size: 11px;
+}
+
+/*=========About page css=============*/
+
+/*=========News css=============*/
+.margin_bottom {
+    margin-bottom: 30px;
+}
+
+#news-section-1 .image, #news-section-1 .image img {
+    border-radius: 0;
+}
+.image, .image img, .news_item {
+    overflow: hidden;
+    position: relative!important;
+}
+
+.sim-lar-text {
+    border: 1px solid #e5e4e4;
+    padding: 0 21px 20px 20px;
+}
+
+.sim-lar-text>h3 {
+    margin: 20px 0;
+    font-weight: 700;
+}
+.sim-lar-text p.bottom10 {
+    color: #394d6b;
+    font-weight: 700;
+}
+.bottom10 {
+    margin-bottom: 10px;
+}
+
+h2, h3, h4 {
+    font-weight: 600!important;
+    margin: 0;
+}
+
+.link_arrow {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #2a2a2a;
+    text-transform: capitalize;
+}
+
+/*=========News page css=============*/
+/*=========Finance page css=============*/
+#finance-area {
+    padding: 80px 0;
+}
+
+.finance-area__content h3 {
+    color: #303030;
+    text-transform: uppercase;
+    padding-right: 50px;
+    margin-bottom: 25px;
+}
+
+.cx-heading {
+    margin-bottom: 20px;
+}
+
+.color-theme {
+    color: #e9c04f;
+}
+
+.single-call-to-action-inner h1 {
+    color: #fff;
+    font: normal normal 700 55px/55px Gill Sans!important;
+}
+.single-call-to-action-inner h3 {
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.finance-area__content .col-md-6 {
+    display: flex;
+    flex-wrap: wrap;
 }
