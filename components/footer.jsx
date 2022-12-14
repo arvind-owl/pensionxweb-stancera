@@ -105,7 +105,7 @@ setReloadItem(!reloadItem);
           <ul className="list angle-double-right list-border">
           {footerMenuItems && footerMenuItems.length > 0 && footerMenuItems.map((menu,index)=>{
                                 return (<li key={index}>
-                                    <Link passHref href={'/pages'+menu.href}><a>{menu.linkText?menu.linkText:'#'}</a></Link>
+                                    <Link passHref href={'/'+menu.href}><a>{menu.linkText?menu.linkText:'#'}</a></Link>
                                     </li>)
                             })}
           </ul>
@@ -115,7 +115,7 @@ setReloadItem(!reloadItem);
         <div className="widget dark">
           <h4 className="widget-title">Didn&apos;t find what you were looking for?</h4>
           <h3>
-          <Link passHref href="/pages/contact"><a>Leave us Feedback</a></Link>
+          <Link passHref href="/contact"><a>Leave us Feedback</a></Link>
           </h3>
         </div>
       </div>
@@ -131,11 +131,11 @@ setReloadItem(!reloadItem);
           <div className="widget">
             <ul className="list-inline sm-text-center">
               <li>
-              <Link passHref href="/pages/privacy-policy"><a>Privacy & Security</a></Link>
+              <Link passHref href="/privacy-policy"><a>Privacy & Security</a></Link>
               </li>
               <li>|</li>
               <li>
-              <Link passHref href="/pages/term-condition"><a>Terms and Conditions</a></Link> 
+              <Link passHref href="/term-condition"><a>Terms and Conditions</a></Link> 
               </li>
             </ul>
           </div>

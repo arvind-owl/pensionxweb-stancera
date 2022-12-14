@@ -1,12 +1,12 @@
 import { NextSeo } from 'next-seo';
 import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
-import { IMAGE_URL } from '../../lib/constants';
+import { IMAGE_URL } from '/lib/constants';
 import Link from 'next/link';
-import Layout from '../../components/layout';
+import Layout from '../components/layout';
 import axios from "axios";
-import { getFooterMenu, getHeaderMenu } from '../../lib/Menus';
-import { getPageByUri  } from '../../lib/Pages';
+import { getFooterMenu, getHeaderMenu } from '../lib/Menus';
+import { getPageByUri  } from '../lib/Pages';
 import React, { useState, useEffect } from "react";
 
 
@@ -154,7 +154,7 @@ function getMediaUrlById(id)
         });
         if(!isAlready)
             {
-				if(id)
+				if(id!='' && id!=null && id!=undefined)
 				{
 					axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
@@ -197,7 +197,7 @@ function getMediaUrlById(id)
 					<span>
 						<i className="fa fa-angle-double-right"></i>
 					</span>
-					<Link href="investments">{page.title}</Link>
+					<Link href={"/"+page.slug}>{page.title}</Link>
 					</div>
 				</div>
 				</div>
@@ -211,7 +211,7 @@ function getMediaUrlById(id)
 								  <li key={i}>
 								  <Link passHref
 									className="d-block menuHead"
-									href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}
+									href={'/'+getUrlSlug(sub?.url)}
 									key={i}
 								  >
 									<a className="d-block menuHead" dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a>
@@ -224,7 +224,7 @@ function getMediaUrlById(id)
 									<li key={i}>
 									<Link passHref
 									  className="d-block text-white HeaderDropDownListItem "
-									  href={'/'+subsub?.object+'s/'+getUrlSlug(subsub?.url)}
+									  href={'/'+getUrlSlug(subsub?.url)}
 									  key={i}
 									>
 									  <a className="d-block text-white HeaderDropDownListItem " dangerouslySetInnerHTML={createMarkup(subsub.title?subsub.title:'#')}></a>
@@ -234,19 +234,7 @@ function getMediaUrlById(id)
 								})}
 								</ul>
 							  </div>:""
-							// 	:  <div className="d-flex flex-column ">
-							// 	<ul className="submenus_submenus">
-							// 	 <li key="0">
-							// 		<Link passHref
-							// 		  className="d-block text-white HeaderDropDownListItem "
-							// 		  href="/pages/contact"
-							// 		>
-							// 		  <a className="d-block text-white HeaderDropDownListItem " >Contact</a>
-							// 		</Link>
-							// 		</li>
-								  
-							// 	</ul>
-							//   </div>
+							
 								}
 								</li>
 								);
@@ -294,7 +282,7 @@ function getMediaUrlById(id)
       <div className="single-call-to-action-inner">
        <h3>We are here to answer your questions 24/7</h3>
        <h1>Need for it solution services</h1>
-       <Link href="/pages/contact" ><a className="btn btn_yellow mt-3" >Contact Us</a></Link>
+       <Link href="/contact" ><a className="btn btn_yellow mt-3" >Contact Us</a></Link>
       </div>
      </div>
     </div>

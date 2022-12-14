@@ -1,10 +1,11 @@
 import { NextSeo } from 'next-seo';
 import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
-import { IMAGE_URL } from '../../lib/constants';
 
 import Layout from '../../components/layout';
 import Link from 'next/link';
+
+import axios from "axios";
 import { getFooterMenu, getHeaderMenu } from '../../lib/Menus';
 import { getPostBySlug } from '../../lib/Posts';
 import React, { useState, useEffect } from "react";
@@ -105,6 +106,8 @@ function getMediaUrlById(id)
         });
         if(!isAlready)
             {
+				if(id!='' && id!=null && id!=undefined)
+				{
 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
   if(res)
@@ -128,7 +131,8 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
     setReloadItem(!reloadItem);
   }
 })
-            }
+				  }
+				  }
   
 }
 	return (
@@ -168,7 +172,6 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
 
 export async function getServerSideProps({ params, res }) {
 	const menuItems = await getFooterMenu();
-	
 	const headerMenuItems = await getHeaderMenu();
 	const { slug } = params;
 	const post = await getPostBySlug(slug);
