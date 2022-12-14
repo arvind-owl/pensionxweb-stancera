@@ -82,7 +82,7 @@ setReloadItem(!reloadItem);
 
     return (
         <>
-       
+    
             <footer id="footer" className="footer">
   <div className="container pt-70 pb-40">
     <div className="row">
