@@ -515,12 +515,12 @@ console.log(banner);
                                              } 
                                         }) }<span className="bullet-circle">•</span>{post?.date}</h5>
                             <h3>
-                            <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>{post.title}</a></Link>
+                            <Link passHref href={post.slug?"/"+post.slug:"#"}><a>{post.title}</a></Link>
                             </h3>
                             <p dangerouslySetInnerHTML={createMarkup(post.content)} />
                             <div className="float-left">
                               <p className="prop-user">
-                              <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>
+                              <Link passHref href={post.slug?"/"+post.slug:"#"}><a>
                                   <i className="fa fa-angle-left"></i> Find out more </a></Link>
                               </p>
                             </div>
@@ -561,13 +561,13 @@ console.log(banner);
                                         }) } <span className="bullet-circle">•</span> {post?.date} </h5>
                                         
                                         <h3>
-                                          <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a>{post.title}</a></Link>
+                                          <Link passHref href={post.slug?"/"+post.slug:"#"}><a>{post.title}</a></Link>
                                         </h3>
 
                                         <p dangerouslySetInnerHTML={createMarkup(post.content)} />
                                         <div className="float-left">
                                           <p className="prop-user">
-                                          <Link passHref href={post.slug?"/posts/"+post.slug:"#"}><a><i className="fa fa-angle-left"></i> Find out more</a></Link>
+                                          <Link passHref href={post.slug?"/"+post.slug:"#"}><a><i className="fa fa-angle-left"></i> Find out more</a></Link>
                                           </p>
                                         </div>
                                       </div>
