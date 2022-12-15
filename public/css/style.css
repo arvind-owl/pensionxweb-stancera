@@ -6028,3 +6028,36 @@ section.features-area-education {
       font: normal normal 700 33px/55px Gill Sans!important;
   }
 }
+@media (min-width: 100px) and (max-width: 992px){
+  #upcoming h2 {
+    font: normal normal 700 30px/35px Brandon Grotesque!important;
+  }
+  
+  .life-events h3 {
+    font: normal normal 700 30px/35px Brandon Grotesque!important;
+  }
+  
+  .news_head h3, .news_text>h3 {
+   font: normal normal 700 30px/35px Brandon Grotesque!important;
+  }
+  
+  #timeline h2 {
+   font: normal normal 700 30px/35px Brandon Grotesque!important;
+  }
+  
+  .steps-timeline ul.lifeeventChecks li i.fa.fa-check {
+   font-size: 35px!important;
+  }
+  
+  #upcoming h2 {
+   font: normal normal 700 30px/35px Brandon Grotesque!important;
+  }
+  
+  .widget.dark h3 {
+   font: normal normal bold 18px/25px Gill Sans!important;
+  }
+  
+  .event-item .event-content .event-title .title {
+   font: normal normal 700 16px Gill Sans!important;
+  }
+  }
