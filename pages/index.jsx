@@ -412,9 +412,12 @@ function createMarkup(html) {
   return { __html: html };
 }
 
-console.log(banner);
+
 	return (
   	<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
+      <head dangerouslySetInnerHTML={{
+                __html: banner?.yoast_head,
+              }} />
     <section id="slider-section">
       <div className="container-fluid">
         <div className="row">
