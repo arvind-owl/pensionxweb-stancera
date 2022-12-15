@@ -187,7 +187,9 @@ function getMediaUrlById(id)
 
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
-			
+			<head dangerouslySetInnerHTML={{
+                __html: pageContent[0]?.yoast_head,
+              }} />
 			<div className="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroudSize:'cover', backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
 				<div className="container text-uppercase text-center">
 					<div className="main-title">
