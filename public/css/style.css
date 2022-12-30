@@ -6061,3 +6061,33 @@ section.features-area-education {
    font: normal normal 700 16px Gill Sans!important;
   }
   }
+
+  .postContent {
+    width: 90%;
+    float: left;
+    margin: 10px 5%;
+  }
+  .postContent h1 {
+    font-size: 34px;
+      font-size: 45px !important;
+      font-weight: 700;
+      margin-top: 80px !important;
+      margin-bottom: 30px !important;
+      letter-spacing: 0.56px;
+      line-height: 46px;
+      background-color: #394d6b;
+      padding: 20px;
+      color: white;
+      border-radius: 50px;
+  }
+  .postContent p {
+    text-align: center;
+    font-size: 20px;
+    margin: 40px 0 !important;
+    line-height: 46px;
+    font-weight: 500;
+  }
+  .postContent div {
+    margin: 30px 0;
+    display: inline-block;
+  }

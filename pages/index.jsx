@@ -635,7 +635,12 @@ function createMarkup(html) {
       <div className="col-sm-1 col-md-2"></div>
     </div>
     <div className="row mb-4">
-      <div className="col-lg-12 text-center" dangerouslySetInnerHTML={createMarkup(banner?.acf?.upcoming_event_extra_content)} />
+      <div className="col-lg-12 text-center">
+      <ul class="upcoming-events">
+          <li><i class="fa fa-file"></i> Most Recent Agenda</li>
+          <li><Link href="/calendar/events" ><a><i className="fa fa-calendar"></i> Full Event Calendar</a></Link></li>
+        </ul>
+          </div>
 
     </div>
     <div className="row">

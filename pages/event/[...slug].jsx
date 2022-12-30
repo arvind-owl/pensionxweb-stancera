@@ -1,13 +1,13 @@
 import { NextSeo } from 'next-seo';
 import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
-
+import { IMAGE_URL } from '../../lib/constants';
+import axios from "axios";
+import Head from "next/head";
 import Layout from '../../components/layout';
 import Link from 'next/link';
-
-import axios from "axios";
 import { getFooterMenu, getHeaderMenu } from '../../lib/Menus';
-import { getPostBySlug } from '../../lib/Posts';
+import { getEventBySlug } from '../../lib/Posts';
 import React, { useState, useEffect } from "react";
 
 export default function PostTemplate({ menuItems, post, headerMenuItems }) {
@@ -32,8 +32,8 @@ export default function PostTemplate({ menuItems, post, headerMenuItems }) {
 		
 		if(post)
 		{
-		 let uri = post?.uri;
-		 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/posts?slug="+uri+"").then((res)=>{
+		 let uri = post;
+		 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/event?slug="+uri+"").then((res)=>{
 			
 			res?.data && res?.data.length > 0 && res?.data.map((pdata,index)=>{
 				let cont = pdata?.content?.rendered;
@@ -106,8 +106,8 @@ function getMediaUrlById(id)
         });
         if(!isAlready)
             {
-				if(id!='' && id!=null && id!=undefined)
-				{
+				if(id!=null && id!=undefined && id!='')
+          {
 axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
   if(res)
@@ -131,19 +131,39 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
     setReloadItem(!reloadItem);
   }
 })
-				  }
-				  }
+		    }  }
   
+}
+
+const getConvertDateFormat = (dat)=>{
+           
+	let mon = dat.substring(4, 6);
+	
+		let month = mon;
+	
+		let date = dat.substring(6);
+		let year = dat.substring(0,4);
+		let returnFormat = year+"-"+month+"-"+date;
+
+
+		return returnFormat;
+
 }
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
-			<head dangerouslySetInnerHTML={{
+			 <head dangerouslySetInnerHTML={{
                 __html: pageContent[0]?.yoast_head,
-              }} />
-			 <main className="mb-auto postContent">  
-			<h1>{post.title}</h1>
-			<div dangerouslySetInnerHTML={createMarkup(post.content)} />
-			
+              }} />		
+			  <main className="mb-auto postContent">  
+			<h1>{pageContent && pageContent[0]?.title}</h1>
+			<div dangerouslySetInnerHTML={createMarkup(pageContent && pageContent[0]?.content)} />
+			<div className='eventDateTimeDetails'>
+			<div className="main-title">
+				<h4>Date : {pageContent && pageContent[0]  && getConvertDateFormat(pageContent && pageContent[0]?.acf?.event_date)}</h4>
+				<h4>Time : {pageContent && pageContent[0]?.acf?.event_time}</h4>
+				</div>
+
+				</div>
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 			<div className="col-xl-3 col-lg-4">
 					{pageContent[0]?.acf?.right_sidebar_boxes && pageContent[0]?.acf?.right_sidebar_boxes.length > 0 ? 
@@ -169,16 +189,18 @@ axios.get("https://dev-stancera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((
    
     </div>
 
-:''}    </main>
+:''}   </main>	 
 		</Layout>
 	);
 }
 
 export async function getServerSideProps({ params, res }) {
 	const menuItems = await getFooterMenu();
+	
 	const headerMenuItems = await getHeaderMenu();
 	const { slug } = params;
-	const post = await getPostBySlug(slug);
+	const post = await getEventBySlug(slug);
+	
 	setEdgeHeader({ res });
 
 	if (!post) {

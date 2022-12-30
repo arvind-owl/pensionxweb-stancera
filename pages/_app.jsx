@@ -8,6 +8,8 @@ import '../public/css/owl.transitions.css';
 import '../public/css/style.css';
 import "../node_modules/flag-icons/css/flag-icons.min.css";
 import '@pantheon-systems/nextjs-kit/style.css';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Script from 'next/script';
 function MyApp({ Component, pageProps }) {
 	return (
